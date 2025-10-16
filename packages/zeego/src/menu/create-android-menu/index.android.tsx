@@ -220,10 +220,38 @@ If you want to use a custom component as your <Content />, you can use the creat
           ItemTitle
         ).targetChildren
 
-        const maybeTitle =
+        let maybeTitle =
           child.props.textValue ?? titleChild?.[0]?.props.children
 
-        if (typeof maybeTitle == 'string') {
+        if (Array.isArray(maybeTitle)) {
+          /**
+           * Use case: <ItemTitle>Here is some {text}</ItemTitle>
+           * React will turn that into ['Here is some ', text] as an array
+           * So we need to 1) detect that it's all strings and 2) join them together
+           */
+          let stringTitle = ''
+          let isString = false
+
+          for (let i = 0; i < maybeTitle.length; i++) {
+            const text = maybeTitle[i]
+            if (text == null) {
+              continue
+            }
+            if (typeof text == 'string' || typeof text == 'number') {
+              stringTitle += text
+              isString = true
+            } else {
+              isString = false
+              break
+            }
+          }
+
+          if (isString) {
+            maybeTitle = stringTitle
+          }
+        }
+
+        if (typeof maybeTitle === 'string') {
           title = maybeTitle
         } else {
           console.error(
@@ -430,6 +458,14 @@ If you want to use a custom component as your <Content />, you can use the creat
         }}
         shouldOpenOnLongPress={shouldOpenOnLongPress}
         actions={menuItems}
+        // @ts-ignore
+        onOpenMenu={() => {
+          props.onOpenChange?.(true)
+        }}
+        // @ts-ignore
+        onCloseMenu={() => {
+          props.onOpenChange?.(false)
+        }}
       >
         {triggerItem}
       </MenuView>
