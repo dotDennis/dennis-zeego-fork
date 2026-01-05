@@ -25,15 +25,15 @@ The following **exact versions** must be installed. Please reference the [compat
 #### yarn
 
 ```sh
-yarn add react-native-ios-context-menu@3.1.0 react-native-ios-utilities@5.1.2
+yarn add react-native-ios-context-menu react-native-ios-utilities
 ```
 
 #### npm
 
 ```sh
 npm i \
-  react-native-ios-context-menu@3.1.0 \
-  react-native-ios-utilities@5.1.2 \
+  react-native-ios-context-menu \
+  react-native-ios-utilities \
   --legacy-peer-deps
 ```
 
@@ -42,13 +42,13 @@ npm i \
 #### yarn
 
 ```sh
-yarn add @react-native-menu/menu@1.2.2
+yarn add @react-native-menu/menu
 ```
 
 #### npm
 
 ```sh
-npm i @react-native-menu/menu@1.2.2 --legacy-peer-deps
+npm i @react-native-menu/menu --legacy-peer-deps
 ```
 
 ### Compatibility Table
@@ -57,6 +57,7 @@ Given a `Zeego` version (start there), see the dependencies to the right that it
 
 | Zeego | React Native | New Arch      | Expo SDK     | `react-native-menu` | `react-native-ios-context-menu` | `react-native-ios-utilities` |
 | ----- | ------------ | ------------- | ------------ | ------------------- | ------------------------------- | ---------------------------- |
+| 3     | 0.76 or 0.77 | ✅ (optional) | 54+          | 2.0.0               | 3.2.0                           | 5.2.0                       |
 | 3     | 0.76 or 0.77 | ✅ (optional) | 52+          | 1.2.2               | 3.1.0                           | 5.1.2                        |
 | 2     | 0.74         | ❌            | 51, 50, 49\* | 1.0.2               | 2.5.1                           | 4.5.3                        |
 
