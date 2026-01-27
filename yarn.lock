@@ -23042,6 +23042,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-ios-context-menu@npm:3.1.0":
+  version: 3.1.0
+  resolution: "react-native-ios-context-menu@npm:3.1.0"
+  dependencies:
+    "@dominicstop/ts-event-emitter": "npm:^1.1.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    react-native-ios-utilities: "*"
+  checksum: 10c0/7dda8d8ee2b0871b9c1bfce985bce49b8762988b34c5af6679fcdf47f125e98df7c1159245f7ca4070a00fd9874336a4fa17f8bf582377e849a850eb511d7680
+  languageName: node
+  linkType: hard
+
 "react-native-ios-utilities@npm:4.5.1":
   version: 4.5.1
   resolution: "react-native-ios-utilities@npm:4.5.1"
@@ -23050,6 +23063,16 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 10c0/6906ae2513c3c56f5bb218229089693168729792ad378cf3364ea8ebd17d1d355868bdea929d837d72262d8eae9060c16d4b31a264d92e802b4b34d0b5090f6e
+  languageName: node
+  linkType: hard
+
+"react-native-ios-utilities@npm:5.1.2":
+  version: 5.1.2
+  resolution: "react-native-ios-utilities@npm:5.1.2"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/b1b700faa2f447423cbfbe941a5e0eaeb7357df5f85f0a5d27a717f040174ecc3f972007f39e76cd053e4d90248028b137726524d71756e3a051efa32136754d
   languageName: node
   linkType: hard
 
@@ -27748,6 +27771,8 @@ __metadata:
     react: "npm:18.3.1"
     react-dom: "npm:18.3.1"
     react-native: "npm:0.76.7"
+    react-native-ios-context-menu: "npm:3.1.0"
+    react-native-ios-utilities: "npm:5.1.2"
     react-native-web: "npm:~0.19.13"
     typescript: "npm:^5.3.3"
     zeego: "npm:^3.0.0-alt.1"
@@ -27783,9 +27808,10 @@ __metadata:
     sf-symbols-typescript: "npm:^2.0.0"
     typescript: "npm:^5.6.2"
   peerDependencies:
-    "@react-native-menu/menu": "*"
+    "@react-native-menu/menu": 1.2.2
     react: "*"
     react-native: "*"
-    react-native-ios-context-menu: ~2.5.1
+    react-native-ios-context-menu: 3.1.0
+    react-native-ios-utilities: 5.1.2
   languageName: unknown
   linkType: soft
