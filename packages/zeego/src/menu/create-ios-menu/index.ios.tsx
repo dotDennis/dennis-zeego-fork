@@ -44,7 +44,7 @@ const createIosMenu = (Menu: 'ContextMenu' | 'DropdownMenu') => {
   const Trigger = create(
     ({ children, style, asChild, ...props }: MenuTriggerProps) => {
       if (asChild) {
-        return cloneElement(children, {
+        return cloneElement(children as ReactElement<any>, {
           style,
           ...props,
         })
@@ -149,10 +149,6 @@ If you want to use a custom component as your <Content />, you can use the creat
   const Preview = create((_: ContextMenuPreviewProps) => {
     return <></>
   }, 'Preview')
-
-  Preview.defaultProps = {
-    isResizeAnimated: true,
-  }
 
   const CheckboxItem = create(({}: MenuCheckboxItemProps) => {
     return <></>
@@ -435,7 +431,6 @@ If you want to use a custom component as your <Content />, you can use the creat
                   icon: triggerItem?.icon,
                   menuItems: nestedItems,
                   menuOptions,
-                  // @ts-expect-error
                   menuAttributes: triggerItem.menuAttributes,
                 }
                 return menuConfig
@@ -535,12 +530,12 @@ If you want to use a custom component as your <Content />, you can use the creat
 
     const auxiliaryProps = auxiliary?.[0]?.props
 
-    const menuRef = useRef<ContextMenuButton>()
+    const menuRef = useRef<any>(null)
 
     return (
       <Component
         ref={menuRef as any}
-        onPressMenuItem={({ nativeEvent }) => {
+        onPressMenuItem={({ nativeEvent }: any) => {
           if (callbacks[nativeEvent.actionKey]) {
             callbacks[nativeEvent.actionKey]()
           }
@@ -615,7 +610,7 @@ If you want to use a custom component as your <Content />, you can use the creat
                 previewSize: previewProps?.size,
                 backgroundColor: previewProps?.backgroundColor,
                 borderRadius: previewProps?.borderRadius,
-                isResizeAnimated: previewProps?.isResizeAnimated,
+                isResizeAnimated: previewProps?.isResizeAnimated ?? true,
                 preferredCommitStyle: previewProps?.preferredCommitStyle,
               }
             : undefined

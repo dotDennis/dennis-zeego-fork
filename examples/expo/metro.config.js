@@ -9,8 +9,12 @@ const workspaceRoot = path.resolve(__dirname, '../..')
 
 const config = getDefaultConfig(__dirname)
 
-config.watchFolders = [workspaceRoot, projectRoot]
-config.resolver.nodeModulesPath = [
+config.watchFolders = [
+  ...(config.watchFolders ?? []),
+  workspaceRoot,
+  projectRoot,
+]
+config.resolver.nodeModulesPaths = [
   path.resolve(projectRoot, 'node_modules'),
   path.resolve(workspaceRoot, 'node_modules'),
 ]

@@ -18,7 +18,7 @@ For upgrading from Zeego 2 to Zeego 3, see the [upgrade guide](https://github.co
 
 > A note for monorepo users: install these in the directory of your native app, not in the root of the monorepo.
 
-The following **exact versions** must be installed. Please reference the [compatibility table](#compatibility-table) for the versions that work with your setup.
+Install the peer dependencies in your app. Use the [compatibility table](#compatibility-table) below for the recommended versions.
 
 ### iOS Dependencies
 
@@ -33,8 +33,7 @@ yarn add react-native-ios-context-menu react-native-ios-utilities
 ```sh
 npm i \
   react-native-ios-context-menu \
-  react-native-ios-utilities \
-  --legacy-peer-deps
+  react-native-ios-utilities
 ```
 
 ### Android Dependencies
@@ -48,18 +47,19 @@ yarn add @react-native-menu/menu
 #### npm
 
 ```sh
-npm i @react-native-menu/menu --legacy-peer-deps
+npm i @react-native-menu/menu
 ```
 
 ### Compatibility Table
 
 Given a `Zeego` version (start there), see the dependencies to the right that it is compatible with.
 
-| Zeego | React Native | New Arch      | Expo SDK     | `react-native-menu` | `react-native-ios-context-menu` | `react-native-ios-utilities` |
-| ----- | ------------ | ------------- | ------------ | ------------------- | ------------------------------- | ---------------------------- |
-| 3     | 0.76 or 0.77 | ✅ (optional) | 54+          | 2.0.0               | 3.2.0                           | 5.2.0                       |
-| 3     | 0.76 or 0.77 | ✅ (optional) | 52+          | 1.2.2               | 3.1.0                           | 5.1.2                        |
-| 2     | 0.74         | ❌            | 51, 50, 49\* | 1.0.2               | 2.5.1                           | 4.5.3                        |
+| Zeego | React Native | New Arch | Expo SDK | `react-native-menu` | `react-native-ios-context-menu` | `react-native-ios-utilities` |
+| ----- | ------------ | -------- | -------- | ------------------- | ------------------------------- | ---------------------------- |
+| 3.x   | 0.83         | ✅ required | 55      | `^2.0.0`            | `3.1.2` to `3.x`                | `5.1.5` to `5.x`             |
+| 3.x   | 0.81         | ✅ optional | 54      | `1.2.2` to `2.x`    | `3.1.x` to `3.x`                | `5.1.x` to `5.x`             |
+| 3.x   | 0.76         | ✅ optional | 52      | `1.2.2`             | `3.1.0`                         | `5.1.2`                      |
+| 2.x   | 0.74         | ❌         | 51, 50, 49\* | `1.0.2`          | `2.5.1`                         | `4.5.3`                      |
 
 <details>
 <summary>*For Expo SDK 49 or lower, click here</summary>
@@ -95,6 +95,12 @@ export default {
 If you know your way around these, you may be able to adjust them. But if you get an error related to `react-native-menu` when building, please reference these properties.
 
 </details>
+
+## Known Limitations
+
+- Zeego requires a native build, so it does not run in Expo Go.
+- On Expo SDK 55+, React Native New Architecture is required.
+- For Expo SDK 52-54, New Architecture is supported but optional.
 
 ## Frameworks
 
@@ -144,3 +150,21 @@ module.exports = {
 ### Vanilla React Native
 
 Run `pod install` in your `ios` folder.
+
+## Local Validation
+
+From the monorepo root:
+
+```sh
+yarn install
+yarn typescript
+yarn lint
+yarn test
+```
+
+For the Expo example app:
+
+```sh
+yarn --cwd examples/expo expo install --check
+cd examples/expo && npx expo-doctor
+```

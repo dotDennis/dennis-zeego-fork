@@ -3,7 +3,6 @@
     "name": "zeeg-example",
     "slug": "zeeg-example",
     "description": "Example app for zeego",
-    "privacy": "public",
     "version": "1.0.0",
     "platforms": [
       "ios",
@@ -24,7 +23,6 @@
     "plugins": [
       "expo-build-properties",
       "expo-router"
-    ],
-    "newArchEnabled": true
+    ]
   }
 }

@@ -37,7 +37,7 @@ const createAndroidMenu = (Menu: 'ContextMenu' | 'DropdownMenu') => {
   const Trigger = create(
     ({ children, style, asChild, ...props }: MenuTriggerProps) => {
       if (asChild) {
-        return cloneElement(children, {
+        return cloneElement(children as ReactElement<any>, {
           style,
           ...props,
         })

@@ -5,7 +5,6 @@
 import React, {
   ReactNode,
   Children,
-  ReactChild,
   isValidElement,
   cloneElement,
   ReactElement,
@@ -32,9 +31,9 @@ export function flattenChildren(
   children: ReactNode,
   depth: number = 0,
   keys: (string | number)[] = []
-): ReactChild[] {
+): ReactChildArray {
   return Children.toArray(children).reduce(
-    (acc: ReactChild[], node: any, nodeIndex) => {
+    (acc: ReactChildArray, node: any, nodeIndex) => {
       if (node.type === React.Fragment) {
         acc.push.apply(
           acc,
@@ -86,7 +85,7 @@ export const pickChildren = <Props = any>(
 }
 
 export const isInstanceOfComponent = <Props>(
-  element: React.ReactElement | React.ReactText | undefined,
+  element: React.ReactNode | undefined,
   targetElement: React.ComponentType<Props> | React.ElementType<Props>
 ): element is NonNullable<React.ReactElement<Props>> => {
   const matches =

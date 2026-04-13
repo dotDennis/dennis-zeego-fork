@@ -55,11 +55,10 @@
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
     "@react-native-community/eslint-config": "^2.0.0",
-    "@react-native-menu/menu": "1.2.2",
+    "@react-native-menu/menu": "^2.0.0",
     "@release-it/conventional-changelog": "^2.0.0",
     "@types/jest": "^26.0.0",
-    "@types/react": "^17.0.1",
-    "@types/react-native": "0.64.3",
+    "@types/react": "^19.2.2",
     "commitlint": "^11.0.0",
     "eslint": "^7.2.0",
     "eslint-config-prettier": "^7.0.0",
@@ -76,11 +75,22 @@
     "typescript": "^5.6.2"
   },
   "peerDependencies": {
-    "@react-native-menu/menu": "1.2.3",
+    "@react-native-menu/menu": ">=1.2.2 <3",
     "react": "*",
     "react-native": "*",
-    "react-native-ios-context-menu": "3.1.0",
-    "react-native-ios-utilities": "5.1.5"
+    "react-native-ios-context-menu": ">=3.1.0 <4",
+    "react-native-ios-utilities": ">=5.1.2 <6"
+  },
+  "peerDependenciesMeta": {
+    "@react-native-menu/menu": {
+      "optional": true
+    },
+    "react-native-ios-context-menu": {
+      "optional": true
+    },
+    "react-native-ios-utilities": {
+      "optional": true
+    }
   },
   "jest": {
     "preset": "react-native",
